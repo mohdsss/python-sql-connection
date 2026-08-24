@@ -6,7 +6,12 @@ class connect:
                              , password="safan2008"
                              ,database="safan")
         self.cur=self.conn.cursor()
-
+    def menu(self):
+        print("1. Add New Sale")
+        print("3. Delete Sale")
+        print("4. Show sale")
+        ch=int(input("Enter your Choice = "))
+        return ch
     def get(self):
         username=str(input("enter your name = "))
         sale=int(input("enter your sale = "))
@@ -18,12 +23,6 @@ class connect:
         query="insert into " + table + " set username='"  +lst[0]+"' ,sal='"+str(lst[1])+"',city='"+lst[2]+"'"
         self.cur.execute(query)
         self.conn.commit()
-
-    def getData(self,table):
-        query="select * from "+ table
-        self.cur.execute(query)
-        data=self.cur.fetchall()
-        return data
 
     def showData(self, data):
         for row in data:
