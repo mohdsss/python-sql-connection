@@ -1,28 +1,28 @@
-# Python MySQL Database Project
+# 🐍 Python MySQL Sales Management System
 
-A simple **Python + MySQL** project that demonstrates how to connect Python with a MySQL database and perform basic database operations such as **INSERT, SELECT, fetching particular records, displaying data, and DELETE**.
+A simple **Python + MySQL** project for managing sales data through a menu-driven command-line interface.
 
 ## 🚀 Features
 
-* Connect Python with MySQL
-* Insert data into a MySQL table
-* Fetch all records
-* Search for a particular record
-* Search using name and ID
-* Display fetched records
-* Delete records by username
-* Uses Python OOP (Class & Methods)
+* 🔌 Connect Python with MySQL
+* ➕ Add a new sale
+* 🔍 Search sales using name or ID
+* 🗑️ Delete a sale
+* 📋 Display sales data
+* 🖥️ Menu-driven command-line interface
+* 🐍 Uses Python Classes and Methods
+* 💾 Uses MySQL database for data storage
 
 ## 🛠️ Technologies Used
 
 * Python
 * MySQL
-* `mysql-connector-python`
+* mysql-connector-python
 
 ## 📁 Project Structure
 
 ```text
-project/
+Python-MySQL-Sales-Management/
 │
 ├── data.py
 ├── query.py
@@ -31,103 +31,125 @@ project/
 
 ## ⚙️ Installation
 
-Install the MySQL connector for Python:
+Install the MySQL connector:
 
 ```bash
 pip install mysql-connector-python
 ```
 
-Make sure MySQL Server is installed and running on your computer.
+Make sure MySQL Server is installed and running.
 
-## 🔌 Database Connection
+## 🔗 Database Configuration
 
-The project connects to a local MySQL database using:
+The project uses a local MySQL database.
 
 ```python
-mysql.connector
+host="localhost"
+user="root"
+database="safan"
 ```
 
-The connection uses:
+Update the database configuration in `data.py` according to your MySQL setup.
 
-* Host: `localhost`
-* User: `root`
-* Database: `safan`
-
-> **Note:** Change the database credentials in the code according to your own MySQL setup. Never upload real passwords to a public GitHub repository.
+> ⚠️ Do not upload your real MySQL password to a public GitHub repository.
 
 ## ▶️ How to Run
 
-Run the query program:
+### 1. Clone the Repository
 
 ```bash
-python query.py
+git clone YOUR_GITHUB_REPOSITORY_URL
 ```
 
-It asks for:
+### 2. Open the Project Folder
+
+```bash
+cd Python-MySQL-Sales-Management
+```
+
+### 3. Install Required Package
+
+```bash
+pip install mysql-connector-python
+```
+
+### 4. Run the Program
+
+Run `data.py`:
+
+```bash
+python data.py
+```
+
+`data.py` imports the `connect` class from `data.py`, so **both files should be in the same folder**.
+
+You **do not need to run `data.py` separately**.
+
+## 📋 Menu
+
+After running `query.py`, the program provides a menu for performing database operations.
 
 ```text
-enter name =
-enter id =
+1. Add New Sale
+3. Delete Sale
+4. Show Sale
 ```
 
-The entered name and ID are then used to search the database and display the matching record.
+Enter your choice when prompted.
 
-## 📌 Database Operations
+## ➕ Add New Sale
 
-### Insert Data
+Choose the Add Sale option and enter:
 
-The project provides an `insertData()` method to insert username, sale, and city data into a selected table.
+```text
+Enter your name =
+Enter your sale =
+Enter your city =
+```
 
-### Get All Data
+The data is then inserted into the MySQL database.
 
-The `getData()` method executes a `SELECT *` query and returns all records from a table.
+## 🔍 Search Sale
 
-### Find Particular Data
+The program can search records using:
 
-The `particulardata()` method can search:
-
+* Name
+* ID
+* Name + ID
 * All records
-* By username
-* By ID
-* By both username and ID
 
-### Display Data
+The matching records are fetched from MySQL and displayed.
 
-The `showData()` method loops through the returned records and prints the selected fields.
+## 🗑️ Delete Sale
 
-### Delete Data
+Enter the username of the sale you want to delete. The corresponding record is removed from the database.
 
-The `delete()` method deletes records from the `safan2` table based on username.
+## 🧠 Concepts Used
 
-## 🧠 Concepts Practiced
-
-This project is useful for learning:
-
-* Python Classes
-* Constructors
-* Methods
-* MySQL connections
-* MySQL cursors
-* SQL queries
-* `SELECT`
-* `INSERT`
-* `DELETE`
+* Python OOP
+* Classes and Objects
+* MySQL Connectivity
+* SQL Queries
+* INSERT
+* SELECT
+* DELETE
+* Cursor
 * `commit()`
 * `fetchall()`
-* Python input handling
-* Basic CRUD operations
+* User Input
+* Menu-driven Programming
 
 ## 🔮 Future Improvements
 
+* Add Update Sale functionality
+* Complete the Show Sale option
+* Add an Exit option
+* Add error handling
 * Use parameterized SQL queries
-* Add UPDATE operation
-* Add better error handling
-* Add a menu-driven interface
-* Move database credentials to environment variables
-* Add proper validation for user input
+* Add input validation
 
 ## 👨‍💻 Author
 
 **Safan**
 
-Built as a beginner project to practice **Python + MySQL database connectivity and CRUD operations**.
+Built to practice **Python + MySQL + OOP + CRUD operations**.
