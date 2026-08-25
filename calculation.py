@@ -1,37 +1,47 @@
 class calc:
-    def max(self,cur):
-        query="select sale from safan2"
+    def maxm(self,cur):
+        query="select sal from safan2"
         cur.execute(query)
-        max=0
         data=cur.fetchall()
+        values=[]
         for i in data:
-            if(i>max):
-                max=i
-        query="select * from safan2 where sale='"+max+"'"
+            values.append(i[0])
+        print(values)    
+        maximum=max(values)    
+        query="select * from safan2 where sal="+str(maximum)
+        cur.execute(query)
         data=cur.fetchall()
         return data
-    def min(self,cur):
-        query="select sale from safan2"
+    def minm(self,cur):
+        query="select sal from safan2"
         cur.execute(query)
-        max=0
         data=cur.fetchall()
-        for i in data:
-            if(i<max):
-                max=i
-        query="select * from safan2 where sale='"+max+"'"
+        value=[]
+        for j in data:
+            value.append(j[0])
+        minimum=min(value)    
+        query="select * from safan2 where sal="+str(minimum)
+        cur.execute(query)
         data=cur.fetchall()
         return data
     def averagesale(self,cur):
-        query="select sale from safan2"
+        query="select sal from safan2"
         cur.execute(query)
         data=cur.fetchall()
-        average=sum(data)/len(data)
+        values=[]
+        for i in data:
+            values.append(i[0])
+        average=sum(values)/len(values)
         return average
     def totalsale(self,cur):
-        query="select sale from safan2"
+        query="select sal from safan2"
         cur.execute(query)
         data=cur.fetchall()
-        total=sum(data)
+        values=[]
+        for i in data:
+            values.append(i[0])
+
+        total=sum(values)
         return total
 
 

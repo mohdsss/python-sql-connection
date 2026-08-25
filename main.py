@@ -10,9 +10,9 @@ while(True):
     elif ch==3:
         obj.delete() 
     elif ch==4:
-        print(obj.max(obj.cur))
+        print(obj.maxm(obj.cur))
     elif ch==5:
-        print(obj.min(obj.cur))  
+        print(obj.minm(obj.cur))  
     elif ch==6:
         print(obj.averagesale(obj.cur))
     elif ch==7:

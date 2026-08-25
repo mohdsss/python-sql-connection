@@ -9,8 +9,8 @@ class connect(calc):
         self.cur=self.conn.cursor()
     def menu(self):
         print("1. Add New Sale")
-        print("2. Delete Sale")
-        print("3. Show sale(optional with name and id)")
+        print("2. Show sale(optional with name and id)")
+        print("3. Delete Sale")
         print("4. Max sale users")
         print("5. Min sale users")
         print("6. Average sale")
