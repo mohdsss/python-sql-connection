@@ -1,4 +1,4 @@
-from query import connect
+from CRUD import connect
 obj=connect()
 while(True): 
     ch=obj.menu()   
