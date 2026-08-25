@@ -9,5 +9,13 @@ while(True):
         obj.showData(data) 
     elif ch==3:
         obj.delete() 
+    elif ch==4:
+        print(obj.max(obj.cur))
+    elif ch==5:
+        print(obj.min(obj.cur))  
+    elif ch==6:
+        print(obj.averagesale(obj.cur))
+    elif ch==7:
+        print(obj.totalsale(obj.cur))          
     else:
         print("!!!! Invalid choice !!!!")    

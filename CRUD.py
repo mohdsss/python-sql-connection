@@ -1,5 +1,6 @@
 import mysql.connector as con
-class connect:
+from calculation import calc
+class connect(calc):
     def __init__(self):
         self.conn=con.connect(host="localhost"
                              ,user="root"
@@ -8,8 +9,12 @@ class connect:
         self.cur=self.conn.cursor()
     def menu(self):
         print("1. Add New Sale")
-        print("3. Delete Sale")
-        print("4. Show sale")
+        print("2. Delete Sale")
+        print("3. Show sale(optional with name and id)")
+        print("4. Max sale users")
+        print("5. Min sale users")
+        print("6. Average sale")
+        print("7. Total sale")
         ch=int(input("Enter your Choice = "))
         return ch
     def get(self):
