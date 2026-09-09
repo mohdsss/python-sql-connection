@@ -1,6 +1,8 @@
 # Python MySQL Database Project
 
-A simple **Python + MySQL** project that demonstrates how to connect Python with a MySQL database and perform basic database operations such as **INSERT, SELECT, fetching particular records, displaying data, and DELETE**.
+ simple Python + MySQL console application for managing sales records.
+The project demonstrates basic OOP, abstraction, CRUD operations,
+MySQL connectivity, and sales calculations, **INSERT, SELECT, fetching particular records, displaying data, and DELETE**, and maximum sales data, minimum sales data , average sale , total sales from databases.
 
 ## 🚀 Features
 
@@ -24,8 +26,9 @@ A simple **Python + MySQL** project that demonstrates how to connect Python with
 ```text
 project/
 │
-├── data.py
-├── query.py
+├── CRUD.py
+├── CALCULATION.py
+|-- MAIN.py
 └── README.md
 ```
 
@@ -116,6 +119,55 @@ This project is useful for learning:
 * `fetchall()`
 * Python input handling
 * Basic CRUD operations
+* # Sales Calculation Module
+
+This module provides basic sales analysis functionality using Python and MySQL data.
+
+## Features
+
+* **Maximum Sale**
+  Finds the highest sale value data from the database and returns the corresponding sale record.
+
+* **Minimum Sale**
+  Finds the lowest sale value data from the database and returns the corresponding sale record.
+
+* **Average Sale**
+  Calculates the average sale by adding all sale values and dividing them by the number of records.
+
+* **Total Sale**
+  Calculates the total sales amount by adding all sale values.
+
+## Methods
+
+```python
+maxm(cur)
+minm(cur)
+averagesale(cur)
+totalsale(cur)
+```
+
+## Example
+
+The module can be used to analyze sales data and get:
+
+```text
+Maximum Sale
+Minimum Sale
+Average Sale
+Total Sale
+```
+
+## Technologies
+
+* Python
+* MySQL
+* SQL
+* Object-Oriented Programming
+
+## Purpose
+
+The calculation module is designed to perform basic statistical calculations on sales data stored in a MySQL database.
+
 
 ## 🔮 Future Improvements
 
