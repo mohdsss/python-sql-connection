@@ -1,21 +1,28 @@
-from CRUD import connect
-obj=connect()
+from calculation import calc
+ob=calc()
 while(True): 
-    ch=obj.menu()   
+    ch=ob.menu()   
     if ch==1:
-        obj.insertData("safan2",obj.get())
+        table=str(input("enter table name = "))
+        ob.insert(table,ob.getData())
     elif ch==2:
-        data=obj.particulardata("safan2",str(input("Enter Name or leave blank = ")),str(input("Entere id or leave blank = "))) 
-        obj.showData(data) 
+        table=str(input("enter table name = "))
+        name=str(input("enter namr or leave blank = "))
+        id=input("enter id or leave blank = ")
+        ob.show(ob.getdata(table,name,str(id)))
+
     elif ch==3:
-        obj.delete() 
+        table=str(input("enter table name = "))
+        name=str(input("enter namr or leave blank = "))
+        id=input("enter id or leave blank = ")
+        ob.delete(table,name,str(id))
     elif ch==4:
-        print(obj.maxm(obj.cur))
+        print(ob.maxm(ob.curr))
     elif ch==5:
-        print(obj.minm(obj.cur))  
+        print(ob.minm(ob.curr))  
     elif ch==6:
-        print(obj.averagesale(obj.cur))
+        print(ob.averagesale(ob.curr))
     elif ch==7:
-        print(obj.totalsale(obj.cur))          
+        print(ob.totalsale(ob.curr))          
     else:
         print("!!!! Invalid choice !!!!")    

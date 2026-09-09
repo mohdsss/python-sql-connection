@@ -1,12 +1,22 @@
-class calc:
+from Library import library
+class calc(library):
+    def menu(self):
+            print("1. Add New Sale")
+            print("2. Show sale(optional with name and id)")
+            print("3. Delete Sale with name and id")
+            print("4. Max sale users")
+            print("5. Min sale users")
+            print("6. Average sale")
+            print("7. Total sale")
+            ch=int(input("Enter your Choice = "))
+            return ch
     def maxm(self,cur):
         query="select sal from safan2"
         cur.execute(query)
         data=cur.fetchall()
         values=[]
         for i in data:
-            values.append(i[0])
-        print(values)    
+            values.append(i[0])   
         maximum=max(values)    
         query="select * from safan2 where sal="+str(maximum)
         cur.execute(query)
@@ -43,8 +53,6 @@ class calc:
 
         total=sum(values)
         return total
-
-
 
 
     

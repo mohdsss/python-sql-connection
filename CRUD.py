@@ -1,60 +1,81 @@
-import mysql.connector as con
-from calculation import calc
-class connect(calc):
+from abc import abstractmethod
+
+import mysql.connector
+
+class myLib:
     def __init__(self):
-        self.conn=con.connect(host="localhost"
-                             ,user="root"
-                             , password="safan2008"
-                             ,database="safan")
-        self.cur=self.conn.cursor()
-    def menu(self):
-        print("1. Add New Sale")
-        print("2. Show sale(optional with name and id)")
-        print("3. Delete Sale")
-        print("4. Max sale users")
-        print("5. Min sale users")
-        print("6. Average sale")
-        print("7. Total sale")
-        ch=int(input("Enter your Choice = "))
-        return ch
-    def get(self):
-        username=str(input("enter your name = "))
-        sale=int(input("enter your sale = "))
-        city=str(input("enter your city = "))
-        return [username,sale,city]
+        try:
+            self.conn=mysql.connector.connect(host="localhost",
+                                        user="root",
+                                        password="safan2008",
+                                        database="safan")
+            self.curr=self.conn.cursor()
+        except Exception as e:
+            print("Error " + e)
 
+    @abstractmethod
+    def insert(self,table, mydic):
+        pass
 
-    def insertData(self,table, lst):
-        query="insert into " + table + " set username='"  +lst[0]+"' ,sal='"+str(lst[1])+"',city='"+lst[2]+"'"
-        self.cur.execute(query)
-        self.conn.commit()
-
-    def showData(self, data):
-        for row in data:
-            print(row[1] + "   " +str(row[2]) +"   " + row[3])
-
-    def particulardata(self,table,name="",id=""):
-        if(id=="" and name==""):
-            query="select * from "+table
-        elif(id!="" and name!=""):
-            query="select * from "+table+" where id='"+str(id)+"' and username='"+name+"'"
-        elif(id=="" and name!=""):
-            query="select * from "+table+" where username='"+name+"'"
-        else:
-            query="select * from "+table+" where id="+str(id)
-        self.cur.execute(query)  
-        data=self.cur.fetchall()
+    
+class library(myLib):
+    def insert(self, table, mydic):
+        try:    
+            super().insert(table, mydic)
+            query="insert into " +table + " set "
+            for key,value in mydic.items(): 
+                if(type(value)==int):   
+                    query+= key + " = " + str(value) + ", "
+                else:
+                    query+= key + " = '" + value + "', "
+            query=query[:len(query)-2]    
+            self.curr.execute(query)
+            self.conn.commit()
+            return True
+        except Exception as e:
+            print("Error " + str(e))
+            return False
+        
+    def getData(self):
+        name=input("Enter a name :")
+        sal=int(input("Enter a sale :"))
+        city=input("Enter a City :")
+        data={"username":name,"sal":sal,"city":city}
         return data
 
-    def __del__(self):
-        self.conn.close()
-    def delete(self):
-        name=str(input("enter name to delete = "))
-        query="delete from safan2 where username='"+name+"'"
-        self.cur.execute(query)
-        self.conn.commit()
+    def getdata(self,table,name="",id=""):
+        try:
+            if(id=="" and name==""):
+                query="select * from "+table
+            elif(id!="" and name!=""):
+                query="select * from "+table+" where id='"+str(id)+"' and username='"+name+"'"
+            elif(id=="" and name!=""):
+                query="select * from "+table+" where username='"+name+"'"
+            else:
+                query="select * from "+table+" where id="+str(id)
+            self.curr.execute(query)  
+            data=self.curr.fetchall()
+            return data
+        except Exception as e:
+            print("ERROR = "+str(e))
+    def show(self,data):
+        for i in data:
+            print(i)        
+    def delete(self,table,name="",id=""):
+        try:
 
-
+            if(id=="" and name==""):
+                query="delete from "+table
+            elif id!="" and name!="":
+                query="delete from "+table+" where username='"+name+"' and id="+str(id)
+            elif name!="" and id=="":
+                query="delete from "+table+" where username='"+name+"'"
+            else:
+                query ="delete * from "+table+" where id= "+str(id)
+            self.curr .execute(query)
+            self.conn.commit() 
+        except Exception as e:
+            print("ERROR = ",e)
 
 
         
